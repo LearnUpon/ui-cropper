@@ -176,7 +176,10 @@ angular.module('uiCropper').factory('cropCanvas', [function() {
             ctx.save();
             ctx.strokeStyle = colors.areaOutline;
             ctx.lineWidth = cropper.strokeWidth;
-            ctx.setLineDash([5, 5]);
+            // IE 9 and 10 do not support line dash
+            if (ctx.setLineDash) {
+                ctx.setLineDash([5, 5]);
+            }
             ctx.beginPath();
             fnDrawClipPath(ctx, centerCoords, size);
             ctx.stroke();

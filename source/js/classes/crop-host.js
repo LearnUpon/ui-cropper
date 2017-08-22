@@ -3,7 +3,7 @@
 angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCircle', 'cropAreaSquare', 'cropAreaRectangle', 'cropEXIF', function ($document, $q, CropAreaCircle, CropAreaSquare, CropAreaRectangle, cropEXIF) {
     /* STATIC FUNCTIONS */
     var colorPaletteLength = 8;
-    
+
     // Get Element's Offset
     var getElementOffset = function (elem) {
         var box = elem.getBoundingClientRect();
@@ -200,8 +200,8 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                 var offset = getElementOffset(ctx.canvas),
                     pageX, pageY;
                 if (e.type === 'touchmove') {
-                    pageX = getChangedTouches(e)[0].pageX;
-                    pageY = getChangedTouches(e)[0].pageY;
+                    pageX = e.originalEvent.changedTouches[0].pageX;
+                    pageY = e.originalEvent.changedTouches[0].pageY;
                 } else {
                     pageX = e.pageX;
                     pageY = e.pageY;
@@ -218,8 +218,8 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                 var offset = getElementOffset(ctx.canvas),
                     pageX, pageY;
                 if (e.type === 'touchstart') {
-                    pageX = getChangedTouches(e)[0].pageX;
-                    pageY = getChangedTouches(e)[0].pageY;
+                    pageX = e.originalEvent.changedTouches[0].pageX;
+                    pageY = e.originalEvent.changedTouches[0].pageY;
                 } else {
                     pageX = e.pageX;
                     pageY = e.pageY;
@@ -234,8 +234,8 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                 var offset = getElementOffset(ctx.canvas),
                     pageX, pageY;
                 if (e.type === 'touchend') {
-                    pageX = getChangedTouches(e)[0].pageX;
-                    pageY = getChangedTouches(e)[0].pageY;
+                    pageX = e.originalEvent.changedTouches[0].pageX;
+                    pageY = e.originalEvent.changedTouches[0].pageY;
                 } else {
                     pageX = e.pageX;
                     pageY = e.pageY;
